@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/main.css" rel="stylesheet">
+  <title>클래스 생성</title>
+</head>
+<body>
+    <%- include('nav') %>
+    <div class="class-form-container">
+        <h2>클래스 생성하기</h2>
+        <form id="createClass" action="/createClass" method="post">
+            <div class="form-group">
+                <label for="className">클래스 이름:</label>
+                <input type="text" id="className" name="className" required>
+            </div>
+            <div class="form-group">
+                <label for="classDescription">클래스 설명:</label>
+                <textarea id="classDescription" name="classDescription" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="classCode" name="classCode" value="">
+                <button type="submit" onclick="generateRandomCode(12)">생성하기</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const classCodeInput = document.getElementById('classCode');
+        function generateRandomCode(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let code = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                code += characters.charAt(randomIndex);
+            }
+            classCodeInput.value = code;
+        }
+    </script>
+    
+</body>
+</html>

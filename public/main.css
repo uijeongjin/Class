@@ -1,0 +1,277 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: #007bff;
+}
+
+
+
+
+/* 회원가입 컨테이너 스타일링 */
+.signup-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 폼 스타일링 */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+/* 로그인 컨테이너 스타일링 */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 폼 스타일링 */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    margin-bottom: 20px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-button:hover {
+    background-color: #218838;
+}
+
+
+
+
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+.class-form-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.class-form-container h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+.class-container {
+    width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.class-details {
+    margin-bottom: 20px;
+}
+
+.chat-container {
+    background-color: #e9e9e9;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.chat-messages {
+    height: 200px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.chat-form {
+    display: flex;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.chat-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.chat-form button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+  /* 클래스 목록 스타일 */
+  .class-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+  }
+
+  /* 클래스 목록 링크 스타일 */
+  .class-item a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* 클래스 목록 링크 호버 스타일 */
+  .class-item a:hover {
+    color: #007bff;
+  }
+
+
+
+
+  .chat-messages {
+      overflow-y: auto;
+      max-height: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+  }
+
+  .chat-messages div {
+      margin-bottom: 5px;
+      padding: 5px;
+  }
+
+  .chat-messages .user {
+      font-weight: bold;
+      color: #007bff; /* Blue color */
+  }
+
+  .chat-form {
+      margin-top: 10px;
+  }

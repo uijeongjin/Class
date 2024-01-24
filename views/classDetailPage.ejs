@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>클래스 상세 페이지</title>
+        <link rel="stylesheet" href="/main.css">
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+            }
+    
+            .class-container {
+                max-width: 800px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            .chat-container {
+                margin-top: 20px;
+            }
+    
+            .chat-messages {
+                max-height: 300px;
+                overflow-y: auto;
+                border: 1px solid #ccc;
+                padding: 10px;
+                border-radius: 8px;
+                background-color: #fff;
+            }
+    
+            .chat-messages div {
+                margin-bottom: 5px;
+                padding: 10px;
+                border-radius: 5px;
+                max-width: 80%; /* Added to limit message width */
+            }
+    
+            .chat-messages .user {
+                font-weight: bold;
+                color: #007bff;
+            }
+    
+            .chat-messages .my-message {
+                text-align: right;
+                margin-left: auto;
+            }
+    
+            .chat-form {
+                margin-top: 10px;
+                display: flex;
+            }
+    
+            .chat-input {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+    
+            .chat-btn {
+                padding: 10px;
+                margin-left: 10px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+<body>
+    <%- include('nav') %>
+    <div class="class-container">
+        <h2><%= classInfo.className %></h2>
+
+        <div class="chat-container">
+            <div class="chat-messages">
+                <% if(chatLog) { %>
+                    <% for( let i = 0; i < chatLog.length ; i++){ %>
+                        <div class="<%= chatLog[i].username === username ? 'my-message' : '' %>">
+                            <span class="user"><%= chatLog[i].username %>:</span>
+                            <%= chatLog[i].message %>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+            
+            <form class="chat-form" action="/chat" method="POST">
+                <input type="hidden" name="classId" value="<%= classInfo._id %>">
+                <input id="chatInput" data-username="<%= username %>" data-className="<%= classInfo._id %>" name="chatting" type="text" class="chat-input" placeholder="메시지 입력">
+                <button class="chat-btn" onclick="getInputValue()" type="submit">전송</button>
+            </form>
+            <form>
+                <button onclick="screenShare()">화면공유</button>
+            </form>
+            
+        </div>
+
+        <h4>초대코드</h4>
+        <input value="<%= classInfo.inviteCode %>">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/socket.io@4.7.2/client-dist/socket.io.min.js"></script>
+    <script>
+        const displayMessage = (setUsername, msg) => {
+            const username = document.getElementById('chatInput').getAttribute('data-username');
+            const chatMessages = document.querySelector('.chat-messages');
+            const messageElement = document.createElement('div');
+            if(setUsername === username) messageElement.classList.add('my-message');
+            messageElement.innerHTML = `<span class="user">${username}:</span> ${msg}`;
+            chatMessages.appendChild(messageElement);
+        }
+
+        const getInputValue = () => {
+            const classId = document.getElementById('chatInput').getAttribute('data-className');
+            const username = document.getElementById('chatInput').getAttribute('data-username');
+            let inputValue = document.getElementById('chatInput').value;
+            socket.emit('inputValue', { msg: inputValue, room: classId, username: username });
+            document.getElementById('chatInput').value = '';
+        }
+
+        const screenShare = () => {
+            
+        }
+        const socket = io()
+        // 실시간 채팅
+        const roomName = document.getElementById('chatInput').getAttribute('data-className');
+        socket.emit('ask-join', roomName);
+        socket.on('chat', (data) => {
+            displayMessage(data.username, data.msg);
+        })
+        // 화면공유
+
+    </script>
+</body>
+</html>
+
